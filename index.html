@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="caja">
+	<ul class="botones">
+		<li>
+			<img style="opacity:0.2" id="botonRojo" alt="" src="img/botonRojo.png">
+		</li>
+		<li>
+			<img style="opacity:0.2" id="botonVerde" alt="" src="img/botonVerde.png">
+		</li>
+	</ul>
+	<ul class="botones">
+		<li>
+			<img style="opacity:0.2" id="botonAzul" alt="" src="img/botonAzul.png">
+		</li>
+		<li>
+			<img style="opacity:0.2" id="botonAmarillo" alt="" src="img/botonAmarillo.png">
+		</li>
+	</ul>
+	<div class="controles">
+			<input type="button" value="Empezar" id="start">
+	</div>
+</div>
+<audio id="audioBotonRojo" src="audio/audioBotonRojo.mp3"></audio>
+<audio id="audioBotonVerde" src="audio/audioBotonVerde.mp3"></audio>
+<audio id="audioBotonAzul" src="audio/audioBotonAzul.mp3"></audio>
+<audio id="audioBotonAmarillo" src="audio/audioBotonAmarillo.mp3"></audio>
+
+<script type="text/javascript">
+
+/**
+ * This JavaScript function always returns a random 
+ * number between min and max (both included)
+ * 
+ * @url https://www.w3schools.com/js/js_random.asp
+ * 
+ * @param min Number min  random 
+ * @param max Number max random
+ * @returns int Random Number
+ */
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+ 
+ 
+var arrNumeros = [];
+//arrayNumeros= variable de reproducción que estoy definiendo yo. Se convierte al azar más adelante, al sumarle un pos++.
+var pos=0;
+//pos= variable de posición que empieza desde 0.
+
+var botonRojo=1;
+var botonVerde=2;
+var botonAzul=3;
+var botonAmarillo=4;
+
+document.getElementById('start').onclick=function(){
+   arrNumeros.push(getRndInteger(1,4));
+   pos=0;
+   replay();
+}
+
+function reproducir(){
+
+	//(arrNumeros[pos]==1) cuando la posición es igual a 1, se enciende y se apaga la opacidad, y se reproduce el audio.
+
+		if (arrNumeros[pos]==1){   
+			document.getElementById('botonRojo').style.opacity='1';
+			document.getElementById('audioBotonRojo').play();
+			setTimeout(function(){
+				document.getElementById('botonRojo').style.opacity='0.2';
+			},500); 	
+
+	//(arrNumeros[pos]==2) cuando la posición es igual a 2, se enciende y se apaga la opacidad, y se reproduce el audio.
+
+		}else if (arrNumeros[pos]==2){   
+			document.getElementById('botonVerde').style.opacity='1';
+			document.getElementById('audioBotonVerde').play();
+			setTimeout(function(){
+				document.getElementById('botonVerde').style.opacity='0.2';
+			},500); 
+		}else if (arrNumeros[pos]==3){  
+//(arrNumeros[pos]==3) cuando la posición es igual a 3, se enciende y se apaga la opacidad, y se reproduce el audio.
+
+			document.getElementById('botonAzul').style.opacity='1';
+			document.getElementById('audioBotonAzul').play();
+			setTimeout(function(){
+				document.getElementById('botonAzul').style.opacity='0.2';
+			},500); 
+			
+		}else {  
+//(si no) se enciende y se apaga la opacidad, y se reproduce el audio.
+
+			document.getElementById('botonAmarillo').style.opacity='1';
+			document.getElementById('audioBotonAmarillo').play();
+			setTimeout(function(){
+				document.getElementById('botonAmarillo').style.opacity='0.2';
+			},500); 
+		}
+}
+
+
+function replay(){
+//función (replay) reproduce la función (reproducir) sumándole 1 posición a la combinación.
+	console.log(pos);
+	if(pos<arrNumeros.length){
+		reproducir();
+		pos++;
+	    setTimeout(replay,1000); 
+	}else{
+		pos=0;
+	}
+}
+
+//encender cada botón cuando clicas.
+
+document.getElementById('botonRojo').onclick=function(){
+	document.getElementById('botonRojo').style.opacity='1';
+	document.getElementById('audioBotonRojo').play();
+	setTimeout(function(){
+		document.getElementById('botonRojo').style.opacity='0.2';
+	},500); 
+	if(arrNumeros[pos]==1){
+		pos++;
+	    if(pos==arrNumeros.length){
+	    	//alert("empezamos");
+	    	arrNumeros.push(getRndInteger(1,4));
+	    	pos=0;
+	    	setTimeout(replay,1000); 
+	    }
+		
+	}else{
+		alert("You lose!");
+		arrNumeros.splice(0,arrNumeros.length);	
+	    }
+	
+}
+
+	
+document.getElementById('botonVerde').onclick=function(){
+	
+	document.getElementById('botonVerde').style.opacity='1';
+	document.getElementById('audioBotonVerde').play();
+	setTimeout(function(){
+		document.getElementById('botonVerde').style.opacity='0.2';
+	},500);
+	if(arrNumeros[pos]==2){
+		pos++;
+	    if(pos==arrNumeros.length){
+	    	//alert("empezamos");
+	    	arrNumeros.push(getRndInteger(1,4));
+	    	pos=0;
+	    	 setTimeout(replay,1000); 
+	    }
+		
+	}else{
+		alert("You lose!");
+		arrNumeros.splice(0,arrNumeros.length);	
+	    }
+}
+document.getElementById('botonAzul').onclick=function(){
+	
+	document.getElementById('botonAzul').style.opacity='1';
+	document.getElementById('audioBotonAzul').play();
+	setTimeout(function(){
+		document.getElementById('botonAzul').style.opacity='0.2';
+	},500); 
+	if(arrNumeros[pos]==3){
+		pos++;
+	    if(pos==arrNumeros.length){
+	    	//alert("empezamos");
+	    	arrNumeros.push(getRndInteger(1,4));
+	    	pos=0;
+	    	 setTimeout(replay,1000); 
+	    }
+		
+	}else{
+		alert("You lose!");
+		arrNumeros.splice(0,arrNumeros.length);	
+	    }
+}
+
+document.getElementById('botonAmarillo').onclick=function(){
+
+	document.getElementById('botonAmarillo').style.opacity='1';
+	document.getElementById('audioBotonAmarillo').play();
+	setTimeout(function(){
+	 document.getElementById('botonAmarillo').style.opacity='0.2';
+	},500); 
+	if(arrNumeros[pos]==4){
+		pos++;
+	    if(pos==arrNumeros.length){
+	    	//alert("empezamos");
+	    	arrNumeros.push(getRndInteger(1,4));
+	    	pos=0;
+	    	 setTimeout(replay,1000); 
+	    }
+		
+	}else{
+		alert("You lose!");
+		arrNumeros.splice(0,arrNumeros.length);	
+	    }
+	
+}
+
+
+	
+</script>
+
+</body>
+</html>
