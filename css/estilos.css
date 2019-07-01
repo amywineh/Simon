@@ -1,29 +1,95 @@
 @charset "UTF-8";
 
+body {
+	background-color: black;
+}
+
+#caja {
+
+/* El fondo de pantalla es la imágen Simon_Game. */
+background-image: url("../img/Simon_Game.png");
+margin: 0 auto;
+width: 1361px;
+height: 1077px;	
+position: relative;
+}
+
 #caja .botones {
+	position: absolute;
 	list-style:none;
 	width:80%;
 	margin: 0px auto;
 	text-align:center;
 	padding:10px;
 }
+
+/* z-index:100 Lleva el botón hacia delante. */
 #caja .controles {
 	list-style:none;
 	padding:10px;
 	width:80%;
 	margin: 0px auto;
-	border:1px solid silver;
-	border-radius:10px;
+/* 	border:1px solid silver;
+	border-radius:10px; */
 	text-align:center;
+	z-index: 100;
+	position: relative;
 }
-#caja .botones li {
+
+/* El fondo de pantalla es la imágen Simon_Game. */
+
+#botonVerde {
+	background-image: url("../img/botonVerdeE.png");
+	margin: 0;
+	width: 681px;
+	height: 539px;	
+	position: absolute;
+	left:0px;
+	top:0px;
+}
+
+#botonRojo {
+	background-image: url("../img/botonRojoE.png");
+	margin: 0;
+	width: 681px;
+	height: 539px;	
+	position: absolute;
+	left:681px;
+	top:0px;
+}
+
+#botonAmarillo {
+	background-image: url("../img/botonAmarilloE.png");
+	margin: 0;
+	width: 681px;
+	height: 539px;	
+	position: absolute;
+	left:681px;
+	top:539px;
+}
+
+#botonAzul {
+	background-image: url("../img/botonAzulE.png");
+	margin: 0;
+	width: 681px;
+	height: 539px;	
+	position: absolute;
+	left:0px;
+	top:539px;
+}
+
+#caja .botones li, #caja .botones li img { 
+	display: none;
+}
+
+/* #caja .botones li {
 	
 	display:inline-block;
 	padding:5px;
 	margin: 5px auto;
 	border:1px solid silver;
 	border-radius:10px;
-}
+} */
 #caja .botones li  img{
 	width:80px;
 }
