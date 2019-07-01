@@ -10,7 +10,7 @@
 <body>
 <div id="caja">
 	<ul class="botones">
-		<li id="botonRojo">
+		<li id="botonRojo"  style="opacity:0">
 			<img style="opacity:0.2" id="botonRojo" alt="" src="img/botonRojo.png">
 		</li>
 		<li id="botonVerde">
@@ -72,15 +72,15 @@ function reproducir(){
 	//(arrNumeros[pos]==1) cuando la posición es igual a 1, se enciende y se apaga la opacidad, y se reproduce el audio.
 
 		if (arrNumeros[pos]==1){   
-//			document.getElementById('botonRojo').style.opacity='1'; 
+			document.getElementById('botonRojo').style.opacity='1'; 
 //Hemos cambiado la opción opacidad por la opción .display='block';
-			document.getElementById('botonRojo').style.display='none';
+			//document.getElementById('botonRojo').style.display='block';
 			document.getElementById('audioBotonRojo').play();
 			setTimeout(function(){
-				//document.getElementById('botonRojo').style.opacity='0.2';
+				document.getElementById('botonRojo').style.opacity='0';
 				//Hemos cambiado la opción opacidad por la opción .display='none';
 				
-				document.getElementById('botonRojo').style.display='block';
+				//document.getElementById('botonRojo').style.display='none';
 			},500); 	
 
 //(arrNumeros[pos]==2) cuando la posición es igual a 2, se enciende y se apaga la opacidad, y se reproduce el audio.
@@ -134,10 +134,10 @@ function replay(){
 //encender cada botón cuando clicas.
 
 document.getElementById('botonRojo').onclick=function(){
-	document.getElementById('botonRojo').style.display='none';
+	document.getElementById('botonRojo').style.display='block';
 	document.getElementById('audioBotonRojo').play();
 	setTimeout(function(){
-		document.getElementById('botonRojo').style.display='block';
+		document.getElementById('botonRojo').style.display='none';
 	},500); 	
 	if(arrNumeros[pos]==1){
 		pos++;
